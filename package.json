@@ -1,7 +1,7 @@
 {
-  "name": "trabalho3luisfelipe",
+  "name": "trabalho3web3",
   "version": "1.0.0",
-  "description": "Terceiro trabalho da disciplina de programacao web 3 2017-3",
+  "description": "Terceiro trabalho da disciplina de laboratorio web 3",
   "main": "index.js",
   "scripts": {
     "test": "node index.js",
@@ -12,9 +12,9 @@
     "url": "git+https://github.com/ufjf-dcc195/ufjf-dcc195-2017-3-trb3-luisfelipe.git"
   },
   "keywords": [
-    "trb3luis"
+    "trab3luis"
   ],
-  "author": "Luis Felipe de Almeida Nascimento",
+  "author": "Luis Felipe",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ufjf-dcc195/ufjf-dcc195-2017-3-trb3-luisfelipe/issues"
