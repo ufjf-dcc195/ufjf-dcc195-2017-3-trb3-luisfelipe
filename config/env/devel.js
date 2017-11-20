@@ -1,4 +1,4 @@
 module.exports = {
   secret: "DCC195",
-  db: process.env.MONGODB_URI || "mongodb://localhost/trab32017"
+  db: process.env.MONGODB_URI|| "mongodb://localhost/trab32017"
 };
