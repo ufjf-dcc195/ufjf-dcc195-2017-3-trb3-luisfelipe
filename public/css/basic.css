@@ -1,0 +1,54 @@
+html{
+  width: auto;
+  height: auto;
+  background-color: black;
+  font-family: sans-serif;
+  color: black;
+}
+body{
+  width: auto;
+  height: auto;
+  background-color: inherit;
+  padding-left: 2em;
+  padding-top: 1em;
+}
+#tudo {
+  width: 1250px;
+  height: 550px;
+  background-color: gray;
+  padding: inherit;
+  font-size: 120%;
+  font-style: oblique;
+ }
+
+ a:link {
+ color: red;
+ }
+ a:visited{
+   color: : green;
+ }
+ #centralizado{
+   text-align: center;
+   background: Gainsboro;
+ }
+ header, nav {
+   text-align: center;
+   background: Gainsboro;
+   margin: 20px 0;
+   padding: 30px;
+ }
+ #lista{
+   background-color: inherit;
+   width: auto;
+   height: 100px;
+   color: inherit;
+ }
+ ul { list-style-type: circle; }
+ ol { list-style-type: circle; }
+ li { list-style-type: circle; }
+.img{
+  position:relative;
+  width: auto;
+  height: auto;
+  background-color: inherit;
+}

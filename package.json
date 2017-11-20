@@ -1,0 +1,33 @@
+{
+  "name": "trabalho3luisfelipe",
+  "version": "1.0.0",
+  "description": "Terceiro trabalho da disciplina de programacao web 3 2017-3",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufjf-dcc195/ufjf-dcc195-2017-3-trb3-luisfelipe.git"
+  },
+  "keywords": [
+    "trb3luis"
+  ],
+  "author": "Luis Felipe de Almeida Nascimento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ufjf-dcc195/ufjf-dcc195-2017-3-trb3-luisfelipe/issues"
+  },
+  "homepage": "https://github.com/ufjf-dcc195/ufjf-dcc195-2017-3-trb3-luisfelipe#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.4",
+    "morgan": "^1.9.0"
+  }
+}
