@@ -1,5 +1,6 @@
 var express = require("./config/express");
 var mongoose = require("./config/mongoose")
+console.log("urls"+process.env.MONGOLAB_NAVY_URI +"||"+ process.env.MONGODB_URI);
 var db = mongoose();
 var app = express();
 var porta = process.env.PORT || 3000
