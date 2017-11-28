@@ -5,25 +5,37 @@
     <title>Lista de Produtos</title>
   </head>
   <body>
+    <%if(clienteLogado){%>
+        <h5>Logado como: <%=clienteLogado.nome%></h5>
+    <%}%>
+    <a href="/index.html">Home</a>
     <h1>Lista de Produtos</h1>
-    <table>
+    <table border="1">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Preco Base</th>
+          <td>Nome do Produto</td>
+          <td>Preco</td>
+          <td>
+            <form action="/produto/novo.html" method="get">
+              <input type="submit" value="Adicionar"/>
+            </form>
+          </td>
         </tr>
       </thead>
-      <a href="/produto/novo.html">Adicionar Produto</a>
       <tbody>
         <%
         for (var i in produtos){
           var produto = produtos[i];
         %>
         <tr>
-          <td><a href="/produto/detalhes.html?id=<%=produto._id%>"><%=produto.nome%></a></td>
-          <td><%=produto.preco_base%></td>
+          <td><%=produto.nome%></td>
+          <td><%=produto.preco%></td>
+          <td><a href="/produto/detalhes.html?id=<%=produto._id%>">Detalhes</a></td>
+          <%if(clienteLogado){%>
+              <td><a method="GET" href="/produto/adicionar-interesse.html?id=<%=produto._id%>">Atribuir Interesse</a></td>
+          <%}%>
         </tr>
-        <% } %>
+      <% } %>
       </tbody>
     </table>
   </body>

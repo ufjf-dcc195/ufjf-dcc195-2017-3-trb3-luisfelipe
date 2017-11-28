@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Produto ja Avaliado</title>
+  </head>
+  <body>
+    <%if(clienteLogado){%>
+        <h5>Logado como: <%=clienteLogado.nome%></h5>
+    <%}%>
+    <a href="/index.html">Home</a>
+    <a href="/produto/listar.html">Produtos</a>
+    <h1>Produto ja Avaliado</h1>
+    <table>
+      <tr>
+        <h2>Nome: <%=produto.nome%><br>
+            Preco: <%=produto.preco%> </h2>
+      </tr>
+  </table>
+  <h4>Voce já avaliou este produto como: <%=nota%></h4>
+  </body>
+</html>

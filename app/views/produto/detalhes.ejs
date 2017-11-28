@@ -5,22 +5,39 @@
     <title>Detalhes de Produto</title>
   </head>
   <body>
-    <h1><%=produto.nome%></h1>
-    <h2><%=produto.preco_base%> </h2>
-    <form action="/produto/excluir.html" method="post">
-      <input type="submit" value="Excluir" />
-      <input type="hidden" name="id" value="<%=produto._id%>"/>
-    </form>
-    <form action="/produto/alterar.html" method="GET">
-      <input type="submit" value="Alterar" />
-      <input type="hidden" name="id" value="<%=produto._id%>"/>
-    </form>
+    <%if(clienteLogado){%>
+        <h5>Logado como: <%=clienteLogado.nome%></h5>
+    <%}%>
+    <h1>Detalhes de Produto</h1>
+    <table>
+      <tr>
+        <h2>Nome: <%=produto.nome%><br>
+            Valor Base: <%=produto.preco_base%><br>
+            Preco: <%=produto.preco%>
+             </h2>
+      </tr>
+    <tr>
+      <td>
+        <form action="/produto/excluir.html" method="post">
+          <input type="submit" value="Excluir" />
+          <input type="hidden" name="id" value="<%=produto._id%>"/>
+        </form>
+      </td>
+      <td>
+        <form action="/produto/alterar.html" method="GET">
+          <input type="submit" value="Alterar" />
+          <input type="hidden" name="id" value="<%=produto._id%>"/>
+        </form>
+      </td>
+    </tr>
+  </table>
+
     <table border="1">
     <tr>
       <td>Nome Cliente</td>
       <td>Valor de Interesse</td>
     </tr>
-    <% for(var i in produto.interesses){
+    <%for(var i in produto.interesses){
           var interessado = produto.interesses[i]%>
           <tr>
             <td><%=interessado.cliente%></td>
@@ -28,5 +45,6 @@
           </tr>
      <%}%>
     </table>
+    <h2>Soma dos Interesses: <%=produto.soma_interesses%></h2>
   </body>
 </html>

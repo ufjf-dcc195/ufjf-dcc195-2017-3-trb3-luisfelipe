@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Clientes</title>
+  </head>
+  <body>
+    <%if(clienteLogado){%>
+        <h5>Logado como: <%=clienteLogado.nome%></h5>
+    <%}%>
+    <a href="/index.html">Home</a>
+    <h1>Lista de Clientes</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Nome do Cliente</td>
+          <td>E-mail</td>
+          <td>
+            <form action="/cliente/novo.html" method="get">
+              <input type="submit" value="Adicionar"/>
+            </form>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+        for (var i in clientes){
+          var cliente = clientes[i];
+        %>
+        <tr>
+          <td><%=cliente.nome%></td>
+          <td><%=cliente.email%></td>
+          <td><a href="/cliente/login.html?id=<%=cliente._id%>">Login</a></td>
+          <td><a href="/cliente/detalhes.html?id=<%=cliente._id%>">Detalhes</a></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

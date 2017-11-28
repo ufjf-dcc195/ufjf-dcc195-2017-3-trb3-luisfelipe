@@ -7,5 +7,6 @@ module.exports = function(){
   console.log("Conexao concluida");
   mongoose.Promise = global.Promise;
   require("../app/models/produto.model");
+  require("../app/models/cliente.model");
   return mongoose;
 }

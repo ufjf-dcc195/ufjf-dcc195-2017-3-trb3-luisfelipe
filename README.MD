@@ -9,10 +9,10 @@
 
 - [x] Utilize o módulo express para roteamento;
 - [x] Utilize o módulo ejs para template da páginas;
-- [ ] Utilize o módulo mongoose para persistência via mongodb;
+- [x] Utilize o módulo mongoose para persistência via mongodb;
 - [x] Crie uma estrutura de roteamento e tratadores de requisição para toda a aplicação conforme o material de aula;
 - [x] Adicione um ponto de entrada para “/index.html” e “/” com uma lista de endereços para as demais questões;
-- [ ] Forneça arquivos CSS e imagens via serve-static;
+- [x] Forneça arquivos CSS e imagens via serve-static;
 - [x] Adicione um ponto de entrada para “/sobre.html” com uma página contendo os dados dos integrantes da dupla com nome completo, número de matrícula, e-mail e curso.
 - [x] Adicione um arquivo README.md na raiz do projeto contendo os mesmos dados como nome completo, número de matrícula, e-mail e curso.
 - [ ] Crie um site de compra e venda de mercadorias artesanais que o preço base do produto siga a lei da oferta e da procura: produtos mais desejados possuem um preço maior.

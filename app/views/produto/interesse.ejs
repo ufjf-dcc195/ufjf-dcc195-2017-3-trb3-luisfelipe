@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Atribuir Interesse</title>
+  </head>
+  <body>
+    <%if(clienteLogado){%>
+        <h5>Logado como: <%=clienteLogado.nome%></h5>
+    <%}%>
+    <h1>Atribuir Interesse</h1>
+    <table>
+      <tr>
+        <h2>Nome: <%=produto.nome%><br>
+            Preco: <%=produto.preco%> </h2>
+      </tr>
+    </table>
+    <form  method="POST">
+    <select name="interesse">
+        <option>Sem interesse</option>
+        <option>Baixo interesse</option>
+        <option>Tenho interesse</option>
+        <option>Muito interessado</option>
+      </select>
+      <input type="submit" value="Confirmar"/>
+      <input type="reset" value="Limpar Camps"/>
+      <form action="/produto/listar.html" method="get">
+      <input type="submit" value="Cancelar"/>
+      </form>
+    </form>
+  </body>
+</html>

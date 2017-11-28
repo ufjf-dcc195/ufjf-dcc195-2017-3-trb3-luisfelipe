@@ -3,6 +3,7 @@ module.exports.enderecos = function(req,res,next){
     {questao:"/",link :"/"},
     {questao:"index.html",link :"/index.html"},
     {questao:"Sobre",link :"/sobre.html"},
-    {questao:"Produtos",link :"produto/listar.html"}
-  ]})
+    {questao:"Produtos",link :"/produto/listar.html"},
+    {questao:"Clientes",link :"/cliente/listar.html"}
+  ],'clienteLogado':req.session.clienteLogado})
 }

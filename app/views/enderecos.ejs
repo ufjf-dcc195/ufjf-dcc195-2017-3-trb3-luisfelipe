@@ -8,12 +8,18 @@
   </head>
   <body>
     <div id="tudo">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
       <ul>
         <lo><h2>Links para os Exercicios</h2></lo>
           <% for(var i in enderecos) {
               var link = enderecos[i];
           %>
             <li><a href="<%=link.link%>"><%=link.questao%></a></li>
+          <%}
+          if(clienteLogado){%>
+            <li><a href="cliente/logout.html">Logout</a></li>
           <%}%>
       </ul>
       <div style="position:absolute;top:50px; right: 50px;">

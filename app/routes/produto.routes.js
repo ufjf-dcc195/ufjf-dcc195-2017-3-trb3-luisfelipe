@@ -5,4 +5,5 @@ module.exports = function (app){
   app.use("/produto/excluir.html",manipulador.remove)
   app.use("/produto/alterar.html",manipulador.alterar)
   app.use("/produto/detalhes.html",manipulador.detalhes)
+  app.use("/produto/adicionar-interesse.html",manipulador.adicionarInteresse)
 }
