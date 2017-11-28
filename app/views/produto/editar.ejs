@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Editar Produto</title>
+  </head>
+  <body>
+    <h1>Editar Produto</h1>
+    <form  method="POST">
+      <input type="text" name="nome" value="<%=produto.nome%>" placeholder="Nome"/>
+      <input type="text" name="preco_base" value="<%=produto.preco_base%>" placeholder="Valor Base"/>
+      <input type="hidden" name="id" value="<%=produto._id%>"/>
+      <input type="submit"/>
+      <input type="reset"/>
+    </form>
+  </body>
+</html>

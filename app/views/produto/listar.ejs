@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Produtos</title>
+  </head>
+  <body>
+    <h1>Lista de Produtos</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preco Base</th>
+        </tr>
+      </thead>
+      <a href="/produto/novo.html">Adicionar Produto</a>
+      <tbody>
+        <%
+        for (var i in produtos){
+          var produto = produtos[i];
+        %>
+        <tr>
+          <td><a href="/produto/detalhes.html?id=<%=produto._id%>"><%=produto.nome%></a></td>
+          <td><%=produto.preco_base%></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
