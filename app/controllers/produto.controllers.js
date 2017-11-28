@@ -5,7 +5,8 @@ module.exports.novoProduto = function(req, res, next) {
  }else {
    var novo = new Produto(req.body);
    novo.save().then(
-   function(u){
+   function(produto){
+       recalculaPrecos()
        res.redirect("/produto/listar.html");
    },
    function(err){
@@ -16,7 +17,6 @@ module.exports.novoProduto = function(req, res, next) {
 module.exports.listar = function(req,res,next){
   Produto.find({}).then(
    function(produtos){
-     recalculaPrecos(produtos)
      res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
    },
    function(err){
@@ -81,28 +81,40 @@ function salvaProduto(produto){
     }
   );
 }
-function recalculaPrecos(produtos){
-  var maior_interesse=produtos[0];
-  for(var i in produtos){
-    var p = produtos[i]
-    if(p.soma_interesses>maior_interesse.soma_interesses){
-      maior_interesse=p;
-    }
-  }
-  if(maior_interesse.soma_interesses!=0){
-    for(var i in produtos){
-      var p = produtos[i]
-      p.preco=p.preco_base+p.preco_base*(p.soma_interesses/maior_interesse.soma_interesses);
-      salvaProduto(p)
-    }
-  }else{
-    for(var i in produtos){
-      var p = produtos[i]
-      p.preco=p.preco_base
-      salvaProduto(p)
-    }
-  }
-
+function recalculaPrecos(){
+  Produto.find({}).then(
+   function(produtos){
+     var maior_interesse=produtos[0];
+     for(var i in produtos){
+       var p = produtos[i]
+       if(p.soma_interesses>maior_interesse.soma_interesses){
+         maior_interesse=p;
+       }
+     }
+     if(maior_interesse.soma_interesses>0){
+       for(var i in produtos){
+         var p = produtos[i]
+         if(p.soma_interesses>0){
+           p.preco=p.preco_base+p.preco_base*(p.soma_interesses/maior_interesse.soma_interesses);
+           salvaProduto(p)
+         }else if(p.soma_interesses==0&&p.preco==0){
+               p.preco=p.preco_base;
+               salvaProduto(p)
+         }
+       }
+     }else{
+       for(var i in produtos){
+         var p = produtos[i]
+         if(p.preco==0){
+           p.preco=p.preco_base
+           salvaProduto(p)
+         }
+       }
+     }
+   },
+   function(err){
+     return next(err);
+   });
 }
 module.exports.adicionarInteresse = function(req,res,next){
   if(req.session.clienteLogado){
@@ -149,6 +161,7 @@ module.exports.adicionarInteresse = function(req,res,next){
             {new: true}
           ).then(
             function (produto){
+              recalculaPrecos()
               res.redirect("/produto/listar.html")
             },
             function(err) {
