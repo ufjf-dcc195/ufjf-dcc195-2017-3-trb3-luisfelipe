@@ -3,21 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>Editar Cliente</title>
+    <link rel="stylesheet" href="../css/basic.css">
   </head>
   <body>
-    <%if(clienteLogado){%>
-        <h5>Logado como: <%=clienteLogado.nome%></h5>
-    <%}%>
-    <h1>Editar Cliente</h1>
-    <form  method="POST">
-      <input type="text" name="nome" value="<%=cliente.nome%>" placeholder="Nome"/>
-      <input type="text" name="email" value="<%=cliente.email%>" placeholder="E-mail"/>
-      <input type="hidden" name="id" value="<%=cliente._id%>"/>
-      <input type="submit" value="Confirmar"/>
-      <input type="reset" value="Limpar Camps"/>
-      <form action="/cliente/listar.html" method="get">
-        <input type="submit" value="Cancelar"/>
-      </form>
-    </form>
+    <div class="outro">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
+      <h1>Editar Cliente</h1>
+      <table>
+        <tr>
+          <td>
+            <form  method="POST">
+              <input type="text" name="nome" value="<%=cliente.nome%>" placeholder="Nome"/>
+              <input type="text" name="email" value="<%=cliente.email%>" placeholder="E-mail"/>
+              <input type="hidden" name="id" value="<%=cliente._id%>"/>
+              <input type="submit" value="Confirmar"/>
+              <input type="reset" value="Limpar Camps"/>
+            </form>
+          </td>
+          <td>
+            <form action="/cliente/listar.html" method="get">
+              <input type="submit" value="Cancelar"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+    <div>
   </body>
 </html>

@@ -3,40 +3,87 @@
   <head>
     <meta charset="utf-8">
     <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="../css/basic.css">
   </head>
   <body>
-    <%if(clienteLogado){%>
-        <h5>Logado como: <%=clienteLogado.nome%></h5>
-    <%}%>
-    <a href="/index.html">Home</a>
-    <h1>Lista de Produtos</h1>
-    <table border="1">
-      <thead>
+    <div class="outro">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
+      <a href="/index.html">Home</a>
+      <h1>Lista de Produtos</h1>
+      <form action="/produto/listar.html" method="post">
+        <input type="text" name="termo" >
+        <select name="opcao">
+            <option>Nome</option>
+            <option>Preco Base</option>
+            <option>Preco</option>
+            <option>Soma Interesses</option>
+          </select>
+        <input type="hidden" name="tipo" value="busca">
+        <input type="submit" value="Buscar"/>
+      </form>
+      <form action="/produto/listar.html" method="post">
+        <table>
+          <tr>
+            <td>Ordenar por: </td>
+            <td>
+              <select name="opcao">
+                  <option>Nome</option>
+                  <option>Preco Base</option>
+                  <option>Preco</option>
+                  <option>Soma Interesses</option>
+              </select>
+            </td>
+            <td>
+              <input type="hidden" name="tipo" value="ordenar">
+              <input type="submit" value="Ordenar"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <table>
         <tr>
-          <td>Nome do Produto</td>
-          <td>Preco</td>
+          <td>
+            <form action="/produto/listar.html" method="get">
+              <input type="submit" value="Atualizar"/>
+            </form>
+          </td>
           <td>
             <form action="/produto/novo.html" method="get">
               <input type="submit" value="Adicionar"/>
             </form>
           </td>
         </tr>
-      </thead>
-      <tbody>
-        <%
-        for (var i in produtos){
-          var produto = produtos[i];
-        %>
-        <tr>
-          <td><%=produto.nome%></td>
-          <td><%=produto.preco%></td>
-          <td><a href="/produto/detalhes.html?id=<%=produto._id%>">Detalhes</a></td>
-          <%if(clienteLogado){%>
-              <td><a method="GET" href="/produto/adicionar-interesse.html?id=<%=produto._id%>">Atribuir Interesse</a></td>
-          <%}%>
-        </tr>
-      <% } %>
-      </tbody>
-    </table>
+      </table>
+      </form>
+      <table border="1">
+        <thead>
+          <tr>
+            <td>Nome do Produto</td>
+            <td>Preco</td>
+            <td>Visualizar Detalhes</td>
+            <%if(clienteLogado){%>
+              <td>Avaliar</td>
+            <%}%>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+          for (var i in produtos){
+            var produto = produtos[i];
+          %>
+          <tr>
+            <td><%=produto.nome%></td>
+            <td><%=produto.preco%></td>
+            <td><a href="/produto/detalhes.html?id=<%=produto._id%>">Detalhes</a></td>
+            <%if(clienteLogado){%>
+                <td><a method="GET" href="/produto/adicionar-interesse.html?id=<%=produto._id%>">Atribuir Interesse</a></td>
+            <%}%>
+          </tr>
+        <% } %>
+        </tbody>
+        </table>
+    </div>
   </body>
 </html>

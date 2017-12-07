@@ -3,31 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Detalhes do Cliente</title>
+    <link rel="stylesheet" href="../css/basic.css">
   </head>
   <body>
-    <%if(clienteLogado){%>
-        <h5>Logado como: <%=clienteLogado.nome%></h5>
-    <%}%>
-    <h1>Detalhes do Cliente</h1>
-    <table>
-      <tr>
-        <h2>Nome: <%=cliente.nome%><br>
-            email: <%=cliente.email%> </h2>
-      </tr>
-    <tr>
-      <td>
-        <form action="/cliente/excluir.html" method="post">
-          <input type="submit" value="Excluir" />
-          <input type="hidden" name="id" value="<%=cliente._id%>"/>
-        </form>
-      </td>
-      <td>
-        <form action="/cliente/alterar.html" method="GET">
-          <input type="submit" value="Alterar" />
-          <input type="hidden" name="id" value="<%=cliente._id%>"/>
-        </form>
-      </td>
-    </tr>
-  </table>
+    <div class="outro">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
+      <h1>Detalhes do Cliente</h1>
+      <table>
+        <tr>
+          <h2>Nome: <%=cliente.nome%><br>
+              email: <%=cliente.email%> </h2>
+        </tr>
+        <tr>
+          <td>
+            <form action="/cliente/excluir.html" method="post">
+              <input type="submit" value="Excluir" />
+              <input type="hidden" name="id" value="<%=cliente._id%>"/>
+            </form>
+          </td>
+          <td>
+            <form action="/cliente/alterar.html" method="GET">
+              <input type="submit" value="Alterar" />
+              <input type="hidden" name="id" value="<%=cliente._id%>"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

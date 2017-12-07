@@ -3,22 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Editar Produto</title>
+    <link rel="stylesheet" href="../css/basic.css">
   </head>
   <body>
-    <%if(clienteLogado){%>
-        <h5>Logado como: <%=clienteLogado.nome%></h5>
-    <%}%>
-    <h1>Editar Produto</h1>
-    <form  method="POST">
-      <input type="text" name="nome" value="<%=produto.nome%>" placeholder="Nome"/>
-      <input type="text" name="preco_base" value="<%=produto.preco_base%>" placeholder="Valor Base"/>
-      <input type="hidden" name="id" value="<%=produto._id%>"/>
-      <input type="hidden" name="preco" value="<%=produto.preco%>"/>
-      <input type="submit" value="Confirmar"/>
-      <input type="reset" value="Limpar Camps"/>
-      <form action="/produto/listar.html" method="get">
-        <input type="submit" value="Cancelar"/>
-      </form>
-    </form>
+    <div class="outro">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
+      <h1>Editar Produto</h1>
+      <table>
+        <tr>
+          <td>
+            <form  method="POST">
+              <input type="text" name="nome" value="<%=produto.nome%>" placeholder="Nome"/>
+              <input type="text" name="preco_base" value="<%=produto.preco_base%>" placeholder="Valor Base"/>
+              <input type="hidden" name="id" value="<%=produto._id%>"/>
+              <input type="hidden" name="preco" value="<%=produto.preco%>"/>
+              <input type="submit" value="Confirmar"/>
+              <input type="reset" value="Limpar Camps"/>
+            </form>
+          </td>
+          <td>
+            <form action="/produto/listar.html" method="get">
+              <input type="submit" value="Cancelar"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

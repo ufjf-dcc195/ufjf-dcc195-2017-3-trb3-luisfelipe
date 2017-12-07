@@ -3,25 +3,103 @@ module.exports.novoProduto = function(req, res, next) {
   if(req.method=='GET'){
    res.render('produto/novo',{'clienteLogado':req.session.clienteLogado});
  }else {
-   var novo = new Produto(req.body);
-   novo.save().then(
-   function(produto){
-       recalculaPrecos()
-       res.redirect("/produto/listar.html");
-   },
-   function(err){
-     return next(err);
-   });
- }
+     var novo = new Produto(req.body);
+     novo.save().then(
+     function(produto){
+         recalculaPrecos()
+         res.redirect("/produto/listar.html");
+     },
+     function(err){
+       return next(err);
+     });
+   }
 }
 module.exports.listar = function(req,res,next){
-  Produto.find({}).then(
-   function(produtos){
-     res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
-   },
-   function(err){
-     return next(err);
-   });
+  if(req.method=='GET'){
+     Produto.find({}).then(
+     function(produtos){
+       res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+     },
+     function(err){
+       return next(err);
+     });
+   }else{
+     if(req.body.opcao=="Nome"){
+       if(req.body.tipo=='busca'){
+         Produto.find({nome : req.body.termo}).then(
+         function(produtos){
+           res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+         },
+         function(err){
+           return next(err);
+         });
+       }else{
+         Produto.find().sort({nome:1}).then(
+         function(produtos){
+           res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+         },
+         function(err){
+           return next(err);
+         });
+       }
+     }else if(req.body.opcao=="Preco Base"){
+       if(req.body.tipo=='busca'){
+         Produto.find({preco_base : req.body.termo}).then(
+         function(produtos){
+           res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+         },
+         function(err){
+           return next(err);
+         });
+       }else{
+         Produto.find().sort({preco_base:1}).then(
+         function(produtos){
+           res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+         },
+         function(err){
+           return next(err);
+         });
+       }
+     }else if(req.body.opcao=="Soma Interesses"){
+       if(req.body.tipo=='busca'){
+           Produto.find({soma_interesses : req.body.termo}).then(
+           function(produtos){
+             res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+           },
+           function(err){
+             return next(err);
+           });
+         }else{
+           Produto.find().sort({soma_interesses:1}).then(
+           function(produtos){
+             res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+           },
+           function(err){
+             return next(err);
+           });
+         }
+     }else if(req.body.opcao=="Preco"){
+       if(req.body.tipo=='busca'){
+           Produto.find({preco : req.body.termo}).then(
+           function(produtos){
+             res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+           },
+           function(err){
+             return next(err);
+           });
+         }else{
+           Produto.find().sort({preco:1}).then(
+           function(produtos){
+             res.render('produto/listar',{'produtos': produtos,'clienteLogado':req.session.clienteLogado});
+           },
+           function(err){
+             return next(err);
+           });
+         }
+     }else{
+       res.redirect("/produto/listar.html");
+     }
+   }
 }
 
 module.exports.remove = function(req,res,next){

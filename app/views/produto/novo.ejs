@@ -3,23 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Novo Produto</title>
+    <link rel="stylesheet" href="../css/basic.css">
   </head>
   <body>
-    <%if(clienteLogado){%>
-        <h5>Logado como: <%=clienteLogado.nome%></h5>
-    <%}%>
-    <h1>Novo Produto</h1>
-    <form  method="POST">
-      <input type="text" name="nome" placeholder="Nome"/>
-      <input type="text" name="preco_base" placeholder="Valor Base"/>
-      <input type="hidden" name="soma_interesses" value="0"/>
-      <input type="hidden" name="preco" value="0"/>
-      <input type="hidden" name="numero_interessados" value="0"/>
-      <input type="submit" value="Adicionar"/>
-      <input type="reset" value="Limpar Campos"/>
-      <form action="/produto/listar.html" method="get">
-      <input type="submit" value="Cancelar"/>
-      </form>
-    </form>
+    <div class="outro">
+      <%if(clienteLogado){%>
+          <h5>Logado como: <%=clienteLogado.nome%></h5>
+      <%}%>
+      <h1>Novo Produto</h1>
+      <table>
+      <tr>
+        <td>
+          <form  method="POST">
+            <input type="text" name="nome" placeholder="Nome"/>
+            <input type="text" name="preco_base" placeholder="Valor Base"/>
+            <input type="hidden" name="soma_interesses" value="0"/>
+            <input type="hidden" name="preco" value="0"/>
+            <input type="hidden" name="numero_interessados" value="0"/>
+            <input type="submit" value="Adicionar"/>
+            <input type="reset" value="Limpar Campos"/>
+          </form>
+        </td>
+        <td>
+          <form action="/produto/listar.html" method="get">
+            <input type="submit" value="Cancelar"/>
+          </form>
+        </td>
+       </tr>
+      </table>
+    </div>
   </body>
 </html>

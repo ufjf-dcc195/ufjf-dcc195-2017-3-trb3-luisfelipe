@@ -20,9 +20,16 @@ body{
   font-size: 120%;
   font-style: oblique;
  }
-
+ .outro {
+   width: 1250px;
+   height: 800px;
+   background-color: gray;
+   padding: inherit;
+   font-size: 100%;
+   font-style: oblique;
+  }
  a:link {
- color: red;
+ color: blue;
  }
  a:visited{
    color: : green;
